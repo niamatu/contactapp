@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List mycontacts = listofcontacts;
     return  const MaterialApp(
       title: "contact App",
       home:HomePage() ,
@@ -25,12 +26,13 @@ class HomePage extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
+  List myContacts = listofcontacts;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation:0,
         backgroundColor:  Colors.yellowAccent,
-        title: const Text("My contact",style:TextStyle(color: Colors.black,fontSize: 20,fontWeight:  FontWeight.bold)),
+        title: const Text("Mycontact",style:TextStyle(color: Colors.black,fontSize: 20,fontWeight:  FontWeight.bold)),
         
         actions:[
    Container(
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
         ]
       ),
      body: ListView.builder(
-       itemCount: 5,
+       itemCount: myContacts.length,
        itemBuilder: (BuildContext context, index){
        return Column(
          crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,14 +70,16 @@ class HomePage extends StatelessWidget {
         InkWell(
           onTap: () {
             Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ContactPage()));
+            MaterialPageRoute(builder: (context) => ContactPage(myContacts: myContacts,)));
           },
-            child: const  ListTile(
-               leading: CircleAvatar(backgroundImage: AssetImage("images/lady.jpg"),
+            child: ListTile(
+               leading: CircleAvatar(backgroundImage: NetworkImage("${myContacts[index]["image"]}"),
             ),
-            title: Text("Niamatu",style: TextStyle(fontWeight: FontWeight.w800),
+            title: Text(
+              myContacts[index]["name"],
+        style: TextStyle(fontWeight: FontWeight.w800),
             ),
-            subtitle: Text("+22557762143"),
+            subtitle: Text(myContacts[index]["phone"]),
             trailing: Icon(Icons.more_horiz),
              ),
           ),
@@ -96,3 +100,127 @@ class HomePage extends StatelessWidget {
    );
   }
 }
+
+
+List listofcontacts = [
+{
+  "name": "nusrat",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=2"
+ },
+{
+  "name": "niamatu",
+ "location":"jahan",
+ "email": "niamatu@gmail.com",
+ "phone":"+223509791766",
+ "Group":"family",
+ "image":"https://picsum.photos/200/300?random=4"
+ },
+{
+  "name": "safia",
+ "location":"tendamba",
+ "email": "safia8@gmail.com",
+ "phone":"+22350477615",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=8"
+ },
+{
+  "name": "zaharie",
+ "location":"nadoli",
+ "email": "zareeee@gmail.com",
+ "phone":"+2235545143",
+ "Group":"family",
+ "image":"https://picsum.photos/200/300?random=5"
+ },
+{
+  "name": "shamira",
+ "location":"limanyiri",
+ "email": "shamihat@gmail.com",
+ "phone":"+2235563843",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=3"
+ },
+{
+  "name": "ali",
+ "location":"danku",
+ "email": "alidalanpan@gmail.com",
+ "phone":"+2235562168",
+ "Group":"family",
+ "image":"https://picsum.photos/200/300?random=7"
+ },
+{
+  "name": "nusratjahan",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=16"
+ },
+{
+  "name": "shasha",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=15"
+ },
+{
+  "name": "shamsha",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=5"
+ },
+{
+  "name": "sungnuma",
+ "location":"jujeidayiri",
+ "email": "sungnuma@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=9"
+ },
+{
+  "name": "haki",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=12"
+ },
+{
+  "name": "saabit",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=11"
+ },
+{
+  "name": "nuratu",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=10"
+ },
+{
+  "name": "hamida",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=13"
+ },
+{
+  "name": "elder",
+ "location":"jujeidayiri",
+ "email": "nusratjahan@gmail.com",
+ "phone":"+2235562143",
+ "Group":"friends",
+ "image":"https://picsum.photos/200/300?random=14"
+ },
+];
